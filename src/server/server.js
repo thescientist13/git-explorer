@@ -1,17 +1,25 @@
-import express from 'express';
-import path from 'path';
-
-const __dirname = path.resolve(); // eslint-disable-line
+const express = require('express');
+const path = require('path');
+const git = require('simple-git')();
 const app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'client')));
 
-app.get('/api/branch', function (req, res) {
-  res.send('return branches');
+app.get('/api/branch', (req, res) => {
+  git.branchLocal((err, data) => {
+    if (!err) {
+      res.send(data.all);
+    }
+  });
 });
 
-app.get('/api/diff', function (req, res) {
-  res.send('return diff');
+app.get('/api/diff', (req, res) => {
+  // TODO source + target
+  git.diff((err, data) => {
+    if (!err) {
+      res.send(data);
+    }
+  });
 });
 
 app.listen(3000);

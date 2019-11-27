@@ -4,7 +4,6 @@
   "description": "A simple local git explorer web tool, run from your CLI.",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "main": "src/server/server.js",
-  "type": "module",
   "files": [
     "src/"
   ],
@@ -22,7 +21,8 @@
   },
   "dependencies": {
     "diff2html": "^2.12.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "simple-git": "^1.126.0"
   },
   "devDependencies": {
     "eslint": "^6.7.1"
