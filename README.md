@@ -1,4 +1,4 @@
-# git-exporer
+# git-explorer
 
 ## Overview
 A simple local git explorer web tool, run from your CLI.
