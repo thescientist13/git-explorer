@@ -22,7 +22,7 @@ jobs:
         node-version: ${{ matrix.node }}
     - name: Installing project dependencies
       run: |
-        yarn install  --frozen-lockfile && yarn lerna bootstrap
+        npm install
     - name: Lint
       run: |
-        yarn lint
+        npm run lint
