@@ -1,0 +1,28 @@
+name: Master Integration
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node: [13.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    - name: Installing project dependencies
+      run: |
+        yarn install  --frozen-lockfile && yarn lerna bootstrap
+    - name: Lint
+      run: |
+        yarn lint

@@ -1,2 +1,14 @@
-# git-
-A simple git explorer tool for your CLI
+# git-exporer
+
+## Overview
+A simple local git explorer web tool, run from your CLI.
+
+## Install
+
+
+## Features
+
+
+## Development
+After cloning the repository
+Run `npm run start`

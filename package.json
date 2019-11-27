@@ -1,0 +1,30 @@
+{
+  "name": "git-explorer",
+  "version": "0.1.0",
+  "description": "A simple local git explorer web tool, run from your CLI.",
+  "author": "Owen Buckley <owen@thegreenhouse.io>",
+  "main": "src/server/server.js",
+  "type": "module",
+  "files": [
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thescientist13/git-explorer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thescientist13/git-explorer/issues"
+  },
+  "homepage": "https://github.com/thescientist13/git-explorer#readme",
+  "scripts": {
+    "lint": "eslint \"src/**/*.js\"",
+    "start": "node ."
+  },
+  "dependencies": {
+    "diff2html": "^2.12.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1"
+  }
+}
