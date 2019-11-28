@@ -1,4 +1,4 @@
-import { html, LitElement } from '//unpkg.com/lit-element?module';
+import { css, html, LitElement } from '//unpkg.com/lit-element?module';
 import { unsafeHTML } from '//unpkg.com/lit-html/directives/unsafe-html.js?module';
 import GitService from './services/git.js';
 
@@ -29,6 +29,10 @@ class AppComponent extends LitElement {
     this.diffHtml = '';
     this.selectedDestinationBranch = '';
     this.selectedSourceBranch = '';
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   async connectedCallback() {
@@ -87,7 +91,7 @@ class AppComponent extends LitElement {
     event.stopPropagation();
 
     this.selectedDestinationBranch = this.branches.filter((branchName) => {
-      const selectedOption = this.shadowRoot.querySelector(`.optionDest${event.target.selectedIndex}`);
+      const selectedOption = this.querySelector(`.optionDest${event.target.selectedIndex}`);
       
       return branchName === selectedOption.textContent;
     })[0];
@@ -100,7 +104,7 @@ class AppComponent extends LitElement {
     event.stopPropagation();
 
     this.selectedSourceBranch = this.branches.filter((branchName) => {
-      const selectedOption = this.shadowRoot.querySelector(`.optionSource${event.target.selectedIndex}`);
+      const selectedOption = this.querySelector(`.optionSource${event.target.selectedIndex}`);
       
       return branchName === selectedOption.textContent;
     })[0];
@@ -112,6 +116,26 @@ class AppComponent extends LitElement {
     const { diffHtml } = this;
    
     return html`
+      <style>
+        .container {
+          margin: 15px;
+        }
+        
+        .row {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        
+        .column {
+          display: flex;
+          flex-direction: column;
+          flex-basis: 100%;
+          flex: 1;
+          height: 100p;
+        }
+      </style>
       
       <main>
 
@@ -120,11 +144,18 @@ class AppComponent extends LitElement {
           <h1>Hello, Git Explorer!</h1>
           <hr/>
 
-          <h3>Destination Branch</h3>
-          ${ this.getDestinationBranchesDropdown() }
-
-          <h3>Source Branch</h3>
-          ${ this.getSourceBranchesDropdown() }
+          <div class='some-page-wrapper'>
+            <div class='row'>
+              <div class='column'>
+                <h3>Destination Branch</h3>
+                ${ this.getDestinationBranchesDropdown() }
+              </div>
+              <div class='column'>
+                <h3>Source Branch</h3>
+                ${ this.getSourceBranchesDropdown() }
+              </div>
+            </div>
+          </div>
 
           <hr/>
 
