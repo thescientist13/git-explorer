@@ -31,6 +31,7 @@ class AppComponent extends LitElement {
     this.selectedSourceBranch = '';
   }
 
+  // https://stackoverflow.com/questions/55126694/how-to-create-litelement-without-shadow-dom
   createRenderRoot() {
     return this;
   }
