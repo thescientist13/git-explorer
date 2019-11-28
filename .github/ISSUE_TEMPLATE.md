@@ -1,6 +1,6 @@
 ## Type of Change
 - [ ] New Feature Request
-- [ ] Documentation / Website
+- [ ] Documentation
 - [ ] Improvement / Suggestion
 - [ ] Bug
 - [ ] Other (please clarify below)
@@ -12,5 +12,5 @@
 <!-- 
 Include relevant code samples, example snippets, benefits, complexity, etc.
 
-For bug reports, please include your configuration file and a sample of your workspace with the minimum amount of code needed to reproduce.  For alternative debugging approaches, you can use our test cases as a format to follow for reproducing bugs.
+For bug reports, please the steps to reproduce as well as error messages and screenshots of the browser and console as well.
 -->
