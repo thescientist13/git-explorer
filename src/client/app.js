@@ -45,7 +45,7 @@ class AppComponent extends LitElement {
 
         <section>
           
-          <p>output</p>
+          <p>Hello Git Explorer!</p>
           <div>${unsafeHTML(htmlString)} </div>
           <hr/>
 
