@@ -33,17 +33,20 @@ class AppComponent extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    // let rawDiff = await this.service.getDiff();
 
     this.branches = await this.gitService.getBranches();
-    // this.diffHtml = Diff2Html.getPrettyHtml(diff, {
-    //   inputFormat: 'diff', 
-    //   showFiles: true, 
-    //   matching: 'lines', 
-    //   outputFormat: 'side-by-side'
-    // });
   }
 
+  async getDiff() {
+    let rawDiff = await this.service.getDiff(this.selectedDestinationBranch, this.selectedSourceBranch);
+    
+    this.diffHtml = Diff2Html.getPrettyHtml(rawDiff, {
+      inputFormat: 'diff', 
+      showFiles: true, 
+      matching: 'lines', 
+      outputFormat: 'side-by-side'
+    });
+  }
   getDestinationBranchesDropdown() {
     return html`
       <select @change="${this.handleDestinationBranchSelected}">
