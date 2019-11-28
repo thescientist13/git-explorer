@@ -38,15 +38,19 @@ class AppComponent extends LitElement {
   }
 
   async getDiff() {
-    let rawDiff = await this.service.getDiff(this.selectedDestinationBranch, this.selectedSourceBranch);
-    
-    this.diffHtml = Diff2Html.getPrettyHtml(rawDiff, {
-      inputFormat: 'diff', 
-      showFiles: true, 
-      matching: 'lines', 
-      outputFormat: 'side-by-side'
-    });
+    if (this.selectedDestinationBranch !== '' && this.selectedSourceBranch !== '') {
+      const rawDiff = await this.gitService.getDiff(this.selectedDestinationBranch, this.selectedSourceBranch);
+      
+      this.diffHtml = Diff2Html.getPrettyHtml(rawDiff, {
+        inputFormat: 'diff', 
+        showFiles: true, 
+        matching: 'lines', 
+        outputFormat: 'side-by-side'
+      });
+    }
   }
+
+  /* eslint-disable indent */
   getDestinationBranchesDropdown() {
     return html`
       <select @change="${this.handleDestinationBranchSelected}">
@@ -60,7 +64,9 @@ class AppComponent extends LitElement {
       </select>
     `;
   }
+  /* eslint-enable */
 
+  /* eslint-disable indent */
   getSourceBranchesDropdown() {
     return html`
       <select @change="${this.handleSourceBranchSelected}">
@@ -74,6 +80,7 @@ class AppComponent extends LitElement {
       </select>
     `;
   }
+  /* eslint-enable */
 
   handleDestinationBranchSelected(event) {
     event.preventDefault();
@@ -84,6 +91,8 @@ class AppComponent extends LitElement {
       
       return branchName === selectedOption.textContent;
     })[0];
+
+    this.getDiff();
   }
 
   handleSourceBranchSelected(event) {
@@ -95,6 +104,8 @@ class AppComponent extends LitElement {
       
       return branchName === selectedOption.textContent;
     })[0];
+  
+    this.getDiff();
   }
 
   render() {

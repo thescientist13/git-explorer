@@ -14,8 +14,11 @@ app.get('/api/branch', (req, res) => {
 });
 
 app.get('/api/diff', (req, res) => {
-  // TODO source + target
-  git.diff((err, data) => {
+  git.raw([
+    'diff',
+    `${req.query.target}`,
+    `${req.query.source}`
+  ], (err, data) => {
     if (!err) {
       res.send(data);
     }
