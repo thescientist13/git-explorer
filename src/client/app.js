@@ -11,33 +11,91 @@ class AppComponent extends LitElement {
       },
       diffHtml: {
         type: String
+      },
+      selectedDestinationBranch: {
+        type: String
+      },
+      selectedSourceBranch: {
+        type: String
       }
     };
   }
 
   constructor() {
     super();
-    this.service = new GitService();
+    this.gitService = new GitService();
+
     this.branches = [];
     this.diffHtml = '';
+    this.selectedDestinationBranch = '';
+    this.selectedSourceBranch = '';
   }
 
   async connectedCallback() {
     super.connectedCallback();
-    let diff = await this.service.getDiff();
+    // let rawDiff = await this.service.getDiff();
 
-    this.branches = await this.service.getBranches();
-    this.diffHtml = Diff2Html.getPrettyHtml(diff, {
-      inputFormat: 'diff', 
-      showFiles: true, 
-      matching: 'lines', 
-      outputFormat: 'side-by-side'
-    });
+    this.branches = await this.gitService.getBranches();
+    // this.diffHtml = Diff2Html.getPrettyHtml(diff, {
+    //   inputFormat: 'diff', 
+    //   showFiles: true, 
+    //   matching: 'lines', 
+    //   outputFormat: 'side-by-side'
+    // });
+  }
+
+  getDestinationBranchesDropdown() {
+    return html`
+      <select @change="${this.handleDestinationBranchSelected}">
+        ${this.branches
+          .map((branch, index) => {
+            return html`
+                <option class="optionDest${index}" value="${branch}">${branch}</option>
+              `;
+            })
+        }
+      </select>
+    `;
+  }
+
+  getSourceBranchesDropdown() {
+    return html`
+      <select @change="${this.handleSourceBranchSelected}">
+        ${this.branches
+          .map((branch, index) => {
+            return html`
+              <option class="optionSource${index}" value="${branch}">${branch}</option>
+            `;
+          })
+        }
+      </select>
+    `;
+  }
+
+  handleDestinationBranchSelected(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.selectedDestinationBranch = this.branches.filter((branchName) => {
+      const selectedOption = this.shadowRoot.querySelector(`.optionDest${event.target.selectedIndex}`);
+      
+      return branchName === selectedOption.textContent;
+    })[0];
+  }
+
+  handleSourceBranchSelected(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.selectedSourceBranch = this.branches.filter((branchName) => {
+      const selectedOption = this.shadowRoot.querySelector(`.optionSource${event.target.selectedIndex}`);
+      
+      return branchName === selectedOption.textContent;
+    })[0];
   }
 
   render() {
     const { diffHtml } = this;
-    const htmlString = diffHtml;
    
     return html`
       
@@ -45,8 +103,19 @@ class AppComponent extends LitElement {
 
         <section>
           
-          <p>Hello Git Explorer!</p>
-          <div>${unsafeHTML(htmlString)} </div>
+          <h1>Hello, Git Explorer!</h1>
+          <hr/>
+
+          <h3>Destination Branch</h3>
+          ${ this.getDestinationBranchesDropdown() }
+
+          <h3>Source Branch</h3>
+          ${ this.getSourceBranchesDropdown() }
+
+          <hr/>
+
+          <div>${unsafeHTML(diffHtml)} </div>
+
           <hr/>
 
         </section>
