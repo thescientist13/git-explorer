@@ -11,42 +11,160 @@ class AppComponent extends LitElement {
       },
       diffHtml: {
         type: String
+      },
+      selectedDestinationBranch: {
+        type: String
+      },
+      selectedSourceBranch: {
+        type: String
       }
     };
   }
 
   constructor() {
     super();
-    this.service = new GitService();
+    this.gitService = new GitService();
+
     this.branches = [];
     this.diffHtml = '';
+    this.selectedDestinationBranch = '';
+    this.selectedSourceBranch = '';
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   async connectedCallback() {
     super.connectedCallback();
-    let diff = await this.service.getDiff();
 
-    this.branches = await this.service.getBranches();
-    this.diffHtml = Diff2Html.getPrettyHtml(diff, {
-      inputFormat: 'diff', 
-      showFiles: true, 
-      matching: 'lines', 
-      outputFormat: 'side-by-side'
-    });
+    this.branches = await this.gitService.getBranches();
+  }
+
+  async getDiff() {
+    if (this.selectedDestinationBranch !== '' && this.selectedSourceBranch !== '') {
+      const rawDiff = await this.gitService.getDiff(this.selectedDestinationBranch, this.selectedSourceBranch);
+      
+      this.diffHtml = Diff2Html.getPrettyHtml(rawDiff, {
+        inputFormat: 'diff', 
+        showFiles: true, 
+        matching: 'lines', 
+        outputFormat: 'side-by-side'
+      });
+    }
+  }
+
+  /* eslint-disable indent */
+  getDestinationBranchesDropdown() {
+    return html`
+      <select @change="${this.handleDestinationBranchSelected}">
+        ${this.branches
+          .map((branch, index) => {
+            return html`
+                <option class="optionDest${index}" value="${branch}">${branch}</option>
+              `;
+            })
+        }
+      </select>
+    `;
+  }
+  /* eslint-enable */
+
+  /* eslint-disable indent */
+  getSourceBranchesDropdown() {
+    return html`
+      <select @change="${this.handleSourceBranchSelected}">
+        ${this.branches
+          .map((branch, index) => {
+            return html`
+              <option class="optionSource${index}" value="${branch}">${branch}</option>
+            `;
+          })
+        }
+      </select>
+    `;
+  }
+  /* eslint-enable */
+
+  handleDestinationBranchSelected(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.selectedDestinationBranch = this.branches.filter((branchName) => {
+      const selectedOption = this.querySelector(`.optionDest${event.target.selectedIndex}`);
+      
+      return branchName === selectedOption.textContent;
+    })[0];
+
+    this.getDiff();
+  }
+
+  handleSourceBranchSelected(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.selectedSourceBranch = this.branches.filter((branchName) => {
+      const selectedOption = this.querySelector(`.optionSource${event.target.selectedIndex}`);
+      
+      return branchName === selectedOption.textContent;
+    })[0];
+  
+    this.getDiff();
   }
 
   render() {
     const { diffHtml } = this;
-    const htmlString = diffHtml;
    
     return html`
-      
+      <style>
+        .container {
+          margin: 15px;
+        }
+        
+        .row {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+        }
+        
+        .column {
+          display: flex;
+          flex-direction: column;
+          flex-basis: 100%;
+          flex: 1;
+          height: 100p;
+        }
+
+        h1 {
+          text-align: center;
+        }
+      </style>
+
       <main>
 
         <section>
           
-          <p>output</p>
-          <div>${unsafeHTML(htmlString)} </div>
+          <h1><u>Hello, Git Explorer!</u></h1>
+          <hr/>
+
+          <div class='some-page-wrapper'>
+            <div class='row'>
+              <div class='column'>
+                <h3>Destination Branch</h3>
+                ${ this.getDestinationBranchesDropdown() }
+              </div>
+              <div class='column'>
+                <h3>Source Branch</h3>
+                ${ this.getSourceBranchesDropdown() }
+              </div>
+            </div>
+          </div>
+
+          <hr/>
+
+          <div>${unsafeHTML(diffHtml)} </div>
+
           <hr/>
 
         </section>
