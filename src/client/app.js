@@ -1,4 +1,4 @@
-import { css, html, LitElement } from '//unpkg.com/lit-element?module';
+import { html, LitElement } from '//unpkg.com/lit-element?module';
 import { unsafeHTML } from '//unpkg.com/lit-html/directives/unsafe-html.js?module';
 import GitService from './services/git.js';
 
@@ -135,13 +135,17 @@ class AppComponent extends LitElement {
           flex: 1;
           height: 100p;
         }
+
+        h1 {
+          text-align: center;
+        }
       </style>
-      
+
       <main>
 
         <section>
           
-          <h1>Hello, Git Explorer!</h1>
+          <h1><u>Hello, Git Explorer!</u></h1>
           <hr/>
 
           <div class='some-page-wrapper'>

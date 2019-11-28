@@ -11,7 +11,6 @@ class GitService {
       });
   }
 
-  // TODO
   getDiff(target = '', source = '') {
     return fetch(`${this.baseUrl}diff?target=${target}&source=${source}`)
       .then((resp) => { 
