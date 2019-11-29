@@ -19,8 +19,10 @@ $ cd /path/to/your/repo
 $ npx git-explorer
 ```
 
+> This approach will always use the latest version of **git-explorer** published to npm.
+
 ### Offline (global npm / Yarn)
-By installing **git-explorer** locally, you can aceess the tool even if online!  Just use your preferred package manager's global installation command and then run the tool from the directory of your local repository
+By installing **git-explorer** globally, you can aceess the tool even if offline!  Just use your preferred package manager's global installation command and then run the tool from the directory of your local repository.
 ```shell
 # npm
 $ npm install -g git-explorer
@@ -32,6 +34,8 @@ $ yarn add --global git-explorer
 $ cd path/to/your/repo
 $ git-explorer
 ```
+
+> To upgrade your global install of **git-explorer** to a newer version, just re-run the global installation command again.
 
 
 ## Contributing
