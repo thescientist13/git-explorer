@@ -4,6 +4,9 @@
   "description": "A simple local git explorer web tool, run from your CLI.",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "main": "src/server/server.js",
+  "engines": {
+    "node": ">=8"
+  },
   "files": [
     "src/"
   ],
