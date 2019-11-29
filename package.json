@@ -1,9 +1,15 @@
 {
   "name": "git-explorer",
   "version": "0.1.0",
-  "description": "A simple local git explorer web tool, run from your CLI.",
+  "description": "A local development tool intended to provide offline-first support for previewing and comparing branches in a local git repository",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "license": "MIT",
+  "keywords": [
+    "cli",
+    "git",
+    "diff",
+    "tool"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thescientist13/git-explorer.git"
