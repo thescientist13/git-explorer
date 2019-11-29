@@ -4,6 +4,7 @@ const git = require('simple-git')();
 const app = express();
 
 app.use(express.static(path.join(__dirname, '..', 'client')));
+app.use(express.static(path.join(process.cwd(), 'node_modules')));
 
 app.get('/api/branch', (req, res) => {
   git.branchLocal((err, data) => {
@@ -14,10 +15,12 @@ app.get('/api/branch', (req, res) => {
 });
 
 app.get('/api/diff', (req, res) => {
+  const { target, source } = req.query;
+
   git.raw([
     'diff',
-    `${req.query.target}`,
-    `${req.query.source}`
+    target,
+    source
   ], (err, data) => {
     if (!err) {
       res.send(data);

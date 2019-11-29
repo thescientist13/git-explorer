@@ -1,5 +1,5 @@
-import { html, LitElement } from '//unpkg.com/lit-element?module';
-import { unsafeHTML } from '//unpkg.com/lit-html/directives/unsafe-html.js?module';
+import { html, LitElement } from 'lit-element';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import GitService from './services/git.js';
 
 class AppComponent extends LitElement {
