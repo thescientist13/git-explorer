@@ -28,4 +28,4 @@ app.get('/api/diff', (req, res) => {
   });
 });
 
-app.listen(3000);
+module.exports = app;

@@ -1,14 +1,14 @@
 {
   "name": "git-explorer",
   "version": "0.1.0",
-  "description": "A simple local git explorer web tool, run from your CLI.",
+  "description": "A local development tool intended to provide offline-first support for previewing and comparing branches in a local git repository",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
-  "main": "src/server/server.js",
-  "engines": {
-    "node": ">=8"
-  },
-  "files": [
-    "src/"
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "git",
+    "diff",
+    "tool"
   ],
   "repository": {
     "type": "git",
@@ -18,9 +18,20 @@
     "url": "https://github.com/thescientist13/git-explorer/issues"
   },
   "homepage": "https://github.com/thescientist13/git-explorer#readme",
+  "main": "./src/server/server.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "bin": {
+    "git-explorer": "./bin/http-server"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
   "scripts": {
-    "lint": "eslint \"src/**/*.js\"",
-    "start": "node ."
+    "lint": "eslint \"src/**/*.js\" \"bin/**/*.js\"",
+    "start": "node ./bin/index.js"
   },
   "dependencies": {
     "diff2html": "^2.12.1",
