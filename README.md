@@ -1,4 +1,8 @@
 # git-explorer
+![GitHub Actions status](https://github.com/thescientist13/git-explorer/workflows/Master%20Integration/badge.svg)
+[![GitHub release](https://img.shields.io/github/tag/thescientist13/git-explorer.svg)](https://github.com/thescientist13/git-explorer/tags)
+[![license](https://img.shields.io/github/license/thescientist13/git-explorer.svg?style=flat-square)](https://github.com/thescientist13/git-explorer)
+
 
 ## Overview
 Git Explorer is local development tool intended to provide offline-first support for previewing and comparing branches in a local git repository.
