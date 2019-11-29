@@ -19,8 +19,8 @@ app.get('/api/diff', (req, res) => {
 
   git.raw([
     'diff',
-    `${target}`,
-    `${source}`
+    target,
+    source
   ], (err, data) => {
     if (!err) {
       res.send(data);
