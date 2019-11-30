@@ -3,6 +3,7 @@ const path = require('path');
 const git = require('simple-git')();
 const app = express();
 
+console.log('process.env', process.env);
 console.log('process.execPath', process.execPath);
 // https://stackoverflow.com/questions/5926672/where-does-npm-install-packages
 const nodeRootLocation = process.env.NODE_ENV === 'production'

@@ -23,7 +23,7 @@
     "node": ">=8"
   },
   "bin": {
-    "git-explorer": "cross-env NODE_ENV=production ./bin/index.js"
+    "git-explorer": "cross-env-shell NODE_ENV=production ./bin/index.js"
   },
   "files": [
     "bin/",
