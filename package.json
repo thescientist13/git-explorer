@@ -18,7 +18,6 @@
     "url": "https://github.com/thescientist13/git-explorer/issues"
   },
   "homepage": "https://github.com/thescientist13/git-explorer#readme",
-  "main": "./src/server/server.js",
   "engines": {
     "node": ">=8"
   },
