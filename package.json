@@ -23,7 +23,7 @@
     "node": ">=8"
   },
   "bin": {
-    "git-explorer": "./bin/index.js"
+    "git-explorer": "cross-env NODE_ENV=production ./bin/index.js"
   },
   "files": [
     "bin/",
@@ -34,6 +34,7 @@
     "start": "node ./bin/index.js"
   },
   "dependencies": {
+    "cross-env": "^6.0.3",
     "diff2html": "^2.12.1",
     "es-module-shims": "^0.4.6",
     "express": "^4.17.1",
