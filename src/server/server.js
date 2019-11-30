@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const express = require('express');
 const path = require('path');
 const git = require('simple-git')();
