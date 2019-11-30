@@ -3,8 +3,17 @@ const path = require('path');
 const git = require('simple-git')();
 const app = express();
 
+console.log('process.execPath', process.execPath);
+// https://stackoverflow.com/questions/5926672/where-does-npm-install-packages
+const nodeRootLocation = process.NODE_ENV === 'production'
+  ? process.platform === 'win32' 
+    ? path.join(process.execPath, '..')
+    : path.join(process.execPath, '..', '..', 'lib')
+  : process.cwd();
+
+console.log('nodeRootLocation', nodeRootLocation);
 app.use(express.static(path.join(__dirname, '..', 'client')));
-app.use(express.static(path.join(process.cwd(), 'node_modules')));
+app.use(express.static(path.join(nodeRootLocation, 'node_modules')));
 
 app.get('/api/branch', (req, res) => {
   git.branchLocal((err, data) => {
