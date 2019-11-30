@@ -23,7 +23,7 @@
     "node": ">=8"
   },
   "bin": {
-    "git-explorer": "cross-env-shell NODE_ENV=production ./bin/index.js"
+    "git-explorer": "./bin/index.js --env=production"
   },
   "files": [
     "bin/",
@@ -34,13 +34,13 @@
     "start": "node ./bin/index.js"
   },
   "dependencies": {
-    "cross-env": "^6.0.3",
     "diff2html": "^2.12.1",
     "es-module-shims": "^0.4.6",
     "express": "^4.17.1",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
-    "simple-git": "^1.126.0"
+    "simple-git": "^1.126.0",
+    "yargs": "^15.0.2"
   },
   "devDependencies": {
     "eslint": "^6.7.1"
