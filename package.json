@@ -22,7 +22,7 @@
     "node": ">=8"
   },
   "bin": {
-    "git-explorer": "./bin/index.js --env=production"
+    "git-explorer": "./bin/index.js"
   },
   "files": [
     "bin/",
@@ -30,7 +30,9 @@
   ],
   "scripts": {
     "lint": "eslint \"src/**/*.js\" \"bin/**/*.js\"",
-    "start": "node ./bin/index.js"
+    "start": "npm run vendor && node ./bin/index.js",
+    "vendor": "rimraf src/client/vendor && node ./bin/vendor.js",
+    "prepublishOnly": "npm run vendor"
   },
   "dependencies": {
     "diff2html": "^2.12.1",
@@ -38,10 +40,11 @@
     "express": "^4.17.1",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
-    "simple-git": "^1.126.0",
-    "yargs": "^15.0.2"
+    "simple-git": "^1.126.0"
   },
   "devDependencies": {
-    "eslint": "^6.7.1"
+    "copy": "^0.3.2",
+    "eslint": "^6.7.1",
+    "rimraf": "^3.0.0"
   }
 }
