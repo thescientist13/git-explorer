@@ -5,12 +5,14 @@
 
 
 ## Overview
-Git Explorer is local development tool intended to provide offline-first support for previewing and comparing branches in a local git repository.
+Git Explorer is a local development tool that provides offline-first support for previewing and comparing branches in a local git repository.
 ![git-explorer](./git-explorer.png)
 
 
 ## Usage
-You can use the project locally on your system a couple different ways, depending on your preferences.  After running these commands, you can view the explorer web app in your browser at `localhost:3000`.
+You can use the project locally on your system a couple different ways, depending on your preference.  You will need to have [NodeJS](https://nodejs.org/) LTS installed on your machine.
+
+> _After running these commands, you can view the explorer web app in your browser at `localhost:3000`_.
 
 ### One Time (npx)
 Use `npx` to use the project (while online) for any local repository you have.
@@ -22,7 +24,7 @@ $ npx git-explorer
 > This approach will always use the latest version of **git-explorer** published to npm.
 
 ### Offline (global npm / Yarn)
-By installing **git-explorer** globally, you can aceess the tool even if offline!  Just use your preferred package manager's global installation command and then run the tool from the directory of your local repository.
+By installing **git-explorer** globally, you can aceess the tool even if you're offline!  Just use your preferred package manager's global installation command and then run the tool from the directory of your local repository.
 ```shell
 # npm
 $ npm install -g git-explorer
@@ -42,7 +44,7 @@ $ git-explorer
 Contributions are welcome either in the form of code or ideas!
 
 ### Ideas / Feature Requests
-See something you want to have included in Git Explorer?  Feel free to [open an issue](), and if you're feeling ambition, submit a PR!
+See something you want to have included in Git Explorer?  Feel free to [open an issue](https://github.com/thescientist13/git-explorer/issues), and if you're feeling ambition, submit a PR!
 
 ### Development
 To develop for the project, make sure you have [NodeJS](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
