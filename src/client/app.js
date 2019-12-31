@@ -27,7 +27,7 @@ class AppComponent extends LitElement {
 
     this.branches = [];
     this.diffHtml = '';
-    this.selectedDestinationBranch = '';
+    this.selectedDestinationBranch = 'master';
     this.selectedSourceBranch = '';
   }
 
@@ -61,8 +61,10 @@ class AppComponent extends LitElement {
       <select @change="${this.handleDestinationBranchSelected}">
         ${this.branches
           .map((branch, index) => {
+            const selected = branch === this.selectedDestinationBranch;
+
             return html`
-                <option class="optionDest${index}" value="${branch}">${branch}</option>
+                <option class="optionDest${index}" value="${branch}" ?selected=${selected}>${branch}</option>
               `;
             })
         }
