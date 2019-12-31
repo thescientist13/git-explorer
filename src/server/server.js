@@ -30,4 +30,12 @@ app.get('/api/diff', (req, res) => {
   });
 });
 
+app.get('/api/status', (req, res) => {
+  git.status((err, data) => {
+    if (!err) {
+      res.send(data);
+    }
+  });
+});
+
 module.exports = app;
