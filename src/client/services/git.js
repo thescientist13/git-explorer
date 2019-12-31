@@ -1,18 +1,25 @@
 class GitService {
 
   constructor() {
-    this.baseUrl = '/api/';
+    this.baseUrl = '/api';
+  }
+
+  getStatus() {
+    return fetch(`${this.baseUrl}/status`)
+      .then((resp) => {
+        return resp.json();
+      });
   }
 
   getBranches() {
-    return fetch(`${this.baseUrl}branch`)
+    return fetch(`${this.baseUrl}/branch`)
       .then((resp) => { 
         return resp.json(); 
       });
   }
 
   getDiff(target = '', source = '') {
-    return fetch(`${this.baseUrl}diff?target=${target}&source=${source}`)
+    return fetch(`${this.baseUrl}/diff?target=${target}&source=${source}`)
       .then((resp) => { 
         return resp.text(); 
       });
