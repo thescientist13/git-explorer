@@ -1,7 +1,7 @@
 {
   "name": "git-explorer",
   "version": "0.3.0",
-  "description": "A local development tool intended to provide offline-first support for previewing and comparing branches in a local git repository",
+  "description": "A local development tool that provides offline-first support for previewing and comparing branches in a local git repository.",
   "author": "Owen Buckley <owen@thegreenhouse.io>",
   "license": "MIT",
   "keywords": [
