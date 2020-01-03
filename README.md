@@ -45,7 +45,7 @@ $ git-explorer
 
 By default, Git Explorer runs on port `3000`. To run it on a different port, you can pass a custom `--port` flag.  Example:
 ```shell
-npx git-explorer --port 4200
+$ npx git-explorer --port 4200
 ```
 
 ## Contributing
