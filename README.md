@@ -14,12 +14,6 @@ You can use the project locally on your system a couple different ways, dependin
 
 > _After running these commands, you can view the explorer web app in your browser at `localhost:3000`_.
 
-## Options
-
-#### Port
-
-By default, Git Explorer runs on port 3000. To run it on a different port ```--port``` flag can be used
-
 ### One Time (npx)
 Use `npx` to use the project (while online) for any local repository you have.
 ```shell
@@ -45,6 +39,14 @@ $ git-explorer
 
 > To upgrade your global install of **git-explorer** to a newer version, just re-run the global installation command again.
 
+### Options
+
+#### Port
+
+By default, Git Explorer runs on port `3000`. To run it on a different port, you can pass a custom `--port` flag.  Example:
+```shell
+npx git-explorer --port 4200
+```
 
 ## Contributing
 Contributions are welcome either in the form of code or ideas!
