@@ -59,7 +59,7 @@ $ npx git-explorer --open
 Contributions are welcome either in the form of code or ideas!
 
 ### Ideas / Feature Requests
-See something you want to have included in Git Explorer?  Feel free to [open an issue](https://github.com/thescientist13/git-explorer/issues), and if you're feeling ambition, submit a PR!
+See something you want to have included in Git Explorer?  Feel free to [open an issue](https://github.com/thescientist13/git-explorer/issues), and if you're feeling ambitious, submit a PR!
 
 ### Development
 To develop for the project, make sure you have [NodeJS](https://nodejs.org/) and [Git](https://git-scm.com/) installed.
