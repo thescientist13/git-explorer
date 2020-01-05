@@ -48,6 +48,13 @@ By default, Git Explorer runs on port `3000`. To run it on a different port, you
 $ npx git-explorer --port 4200
 ```
 
+#### Open
+
+ To automatically open the default browser on start of the server, you can pass a custom `--open` flag. Example:
+```shell
+$ npx git-explorer --open
+```
+
 ## Contributing
 Contributions are welcome either in the form of code or ideas!
 
