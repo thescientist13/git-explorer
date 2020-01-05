@@ -47,6 +47,7 @@
   "devDependencies": {
     "copy": "^0.3.2",
     "eslint": "^6.7.1",
+    "open": "^7.0.0",
     "rimraf": "^3.0.0"
   }
 }
