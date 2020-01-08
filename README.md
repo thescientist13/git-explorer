@@ -5,7 +5,7 @@
 
 
 ## Overview
-Git Explorer is a local development tool that provides offline-first support for previewing and comparing branches in a local git repository.
+Git Explorer provides offline-first support for previewing and comparing branches in a local git repository.
 ![git-explorer](./git-explorer.png)
 
 
